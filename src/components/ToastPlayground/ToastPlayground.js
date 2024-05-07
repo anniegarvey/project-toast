@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Button from '../Button';
-import Toast from '../Toast';
+import ToastShelf from '../ToastShelf';
 
 import styles from './ToastPlayground.module.css';
 
@@ -25,6 +25,7 @@ function ToastPlayground() {
     };
     setToasts([toast, ...toasts]);
     setMessage('');
+    setVariant('notice');
   }
 
   return (
@@ -34,7 +35,7 @@ function ToastPlayground() {
         <h1>Toast Playground</h1>
       </header>
 
-      {toasts.map(t => <Toast key={t.id} {...t} />)}
+      <ToastShelf toasts={toasts} />
 
       <div className={styles.controlsWrapper}>
         <div className={styles.row}>

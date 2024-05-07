@@ -19,7 +19,7 @@ const ICONS_BY_VARIANT = {
 };
 const VARIANTS = Object.keys(ICONS_BY_VARIANT);
 
-function Toast({ message, dismiss, variant = 'notice' }) {
+function Toast({ dismiss, variant = 'notice', children }) {
   if (!VARIANTS.includes(variant)) {
     throw new Error(`Variant ${variant} is not one of the allowed values ${VARIANTS}`);
   }
@@ -30,7 +30,7 @@ function Toast({ message, dismiss, variant = 'notice' }) {
         <Icon size={24} />
       </div>
       <p className={styles.content}>
-        {message}
+        {children}
       </p>
       <button className={styles.closeButton} onClick={dismiss}>
         <X size={24} />
