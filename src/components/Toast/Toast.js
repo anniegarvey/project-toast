@@ -17,12 +17,17 @@ const ICONS_BY_VARIANT = {
   success: CheckCircle,
   error: AlertOctagon,
 };
+const VARIANTS = Object.keys(ICONS_BY_VARIANT);
 
-function Toast({ message, dismiss }) {
+function Toast({ message, dismiss, variant = 'notice' }) {
+  if (!VARIANTS.includes(variant)) {
+    throw new Error(`Variant ${variant} is not one of the allowed values ${VARIANTS}`);
+  }
+  const Icon = ICONS_BY_VARIANT[variant];
   return (
-    <div className={`${styles.toast} ${styles.notice}`}>
+    <div className={`${styles.toast} ${styles[variant]}`}>
       <div className={styles.iconContainer}>
-        <Info size={24} />
+        <Icon size={24} />
       </div>
       <p className={styles.content}>
         {message}
